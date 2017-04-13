@@ -1,1 +1,1 @@
-# vicerascal.github.io
+# welcome smart contract test page
