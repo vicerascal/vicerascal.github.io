@@ -90,9 +90,9 @@ function setValue() {
  });
 }
 function loadValue(){
-  //var loadValue = document.getElementById("txid").value;
+  var txValue = document.getElementById("txid").value;
   simpleStorage.get(function(e,r){
-    document.getElementById('txData').innerHTML = r.toNumber();
+    document.getElementById('txData').innerHTML = txValue.toNumber();
   }); 
 }
 </script>
