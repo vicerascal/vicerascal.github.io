@@ -92,7 +92,9 @@ function setValue() {
 }
 function loadValue(){
   var txValue = document.getElementById("txid").value;
-  document.getElementById('txData').innerHTML = txValue.toNumber();
+  web3.eth.getTransaction(txValue, function(e,r){
+      document.getElementById('txData').innerHTML = txValue.toNumber();
+   });
 }
 </script>
 </html>
