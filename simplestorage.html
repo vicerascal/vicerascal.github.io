@@ -91,9 +91,13 @@ function setValue() {
 }
 function loadValue(){
   var txValue = document.getElementById("txid").value;
+<<<<<<< HEAD
    web3.eth.getTransaction(txValue, function(e,r){
       document.getElementById('txData').innerHTML = txValue.toNumber();
     }
+=======
+  document.getElementById('txData').innerHTML = txValue.toNumber();
+>>>>>>> parent of a43349e... test
 }
 </script>
 </html>
