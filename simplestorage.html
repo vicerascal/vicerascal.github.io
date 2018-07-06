@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +32,7 @@
 <script src="https://cdn.rawgit.com/ethereum/web3.js/develop/dist/web3.js"></script>
 <!-- script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script -->
 <script>
-var contractAddress = '0xccf81d82b3f039ebdc061817fdfdc58a7616528b';
+var contractAddress = '0xdb10db0958c74e250b35591712fe56cf0fe9988c';
 var abi = [{"constant":false,"inputs":[{"name":"x","type":"uint256"}],"name":"set","outputs":[],"payable":false,"type":"function"},{"constant":true,"inputs":[],"name":"get","outputs":[{"name":"","type":"uint256"}],"payable":false,"type":"function"}];
 var simpleStorageContract;
 var simpleStorage;
@@ -45,7 +44,7 @@ window.addEventListener('load', function() {
   } else {
     console.log('No web3? You should consider trying MetaMask!')
     // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
-    window.web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+    window.web3 = new Web3(new Web3.providers.HttpProvider("http://168.188.129.209:80"));
   }
   // Now you can start your app & access web3 freely:
   startApp();
@@ -53,15 +52,13 @@ window.addEventListener('load', function() {
 function startApp() {
   simpleStorageContract = web3.eth.contract(abi);
   simpleStorage = simpleStorageContract.at(contractAddress);
-  document.getElementById('contractAddr').innerHTML = getLink(contractAddress);
+  document.getElementById('contractAddr').innerHTML = contractAddress;
   web3.eth.getAccounts(function(e,r){
-    document.getElementById('accountAddr').innerHTML = getLink(r[0]);
+    document.getElementById('accountAddr').innerHTML = r[0];
   });
   getValue();
 }
-function getLink(addr) {
-  return '<a target="_blank" href=https://ropsten.etherscan.io/address/' + addr + '>' + addr +'</a>';
-}
+
 function getValue() {
   simpleStorage.get(function(e,r){
     document.getElementById('storedData').innerHTML=r.toNumber();
